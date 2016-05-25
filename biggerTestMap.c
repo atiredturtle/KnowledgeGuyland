@@ -3,12 +3,22 @@
 
 #define NO_ONE 0
 #define NUM_NODES 54
+#define NUM_TILES 19
 #define NON 999
+
+#define NO_ONE 0
+#define UNI_A 1
+#define UNI_B 2
+#define UNI_C 3
 
 typedef struct _node *link;
 typedef struct _node {
    // the number of the node (for testing purposes)
    int id;
+
+   // Who owns the node
+   int ownerID; 
+
    // all links
    link link1;
    link link2;
@@ -22,6 +32,8 @@ typedef struct _node {
 
 /*                      HOW LINKS ARE DEFINED 
           NODE_TYPE_2             ||         NODE_TYPE_2
+==================================||==================================
+                                  ||
                 link2             ||    link1
               /                   ||         \
  link1 -- node                    ||          node -- link2
@@ -30,13 +42,15 @@ typedef struct _node {
 */
 
 void joinNodes (int nodeID, link *map, int nodeLink1, int nodeLink2, int nodeLink3);
-void populateMap (link *map);
+void initialiseMap (link *map);
+void placePlayers (link *map);
 void printMap (link map[]);
 
 int main (int argc, char *argv[]){
    link map[NUM_NODES];
 
-   populateMap(map);
+   initialiseMap (map);
+   placePlayers (map);
 
    printf ("\n \n");
 
@@ -135,7 +149,7 @@ void joinNodes (int nodeID, link *map, int nodeLink1, int nodeLink2, int nodeLin
 
 }
 
-void populateMap (link *map){
+void initialiseMap (link *map){
    int i = 0;
 
    while (i < NUM_NODES){
@@ -145,6 +159,20 @@ void populateMap (link *map){
       map[i]->id = i;
       i++;
    }
+}
+
+void placePlayers (link *map){
+   //Player 1 (A) starts on node 5(link 3)  and node 53 (link 2)
+   map[5]->owner3 = UNI_A;
+   map[53]->owner2 = UNI_A;
+
+   //Player 2 (B) starts on node 0(link 3)  and node 42 (link 1)
+   map[0]->owner3 = UNI_B;
+   map[42]->owner1 = UNI_B;
+
+   //Player 3 (C) starts on node 10(link 1) and node 44 (link 2)
+   map[10]->owner1 = UNI_C;
+   map[44]->owner2 = UNI_C;
 }
 
 void printMap (link map[NUM_NODES]){
