@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -8,7 +7,7 @@
 typedef struct _node *link;
 typedef struct _node {
    // the number of the node (for testing purposes)
-   int ID;
+   int id;
    // all links
    link link1;
    link link2;
@@ -91,8 +90,8 @@ void populateMap (link *map){
    while (i < NUM_NODES){
       // create new node
       map[i] = malloc(sizeof(node));
-      // set the ID for the node
-      map[i]->ID = i;
+      // assign id
+      map[i]->id = i;
       i++;
    }
 }
@@ -102,19 +101,19 @@ void printMap (link map[NUM_NODES]){
     while (i < NUM_NODES){
         printf ("node%d:   ", i);
         if (map[i]->link1 != NULL){
-           printf ("link1 -> %d    |  ", map[i]->link1->ID);
+           printf ("link1 -> %d    |  ", map[i]->link1->id);
         } else {
            printf ("link1 -> NULL  |  ");
         }
 
         if (map[i]->link2 != NULL){
-           printf ("link2 -> %d    |  ", map[i]->link2->ID);
+           printf ("link2 -> %d    |  ", map[i]->link2->id);
         } else {
            printf ("link2 -> NULL  |  ");
         }
 
         if (map[i]->link3 != NULL){
-           printf ("link3 -> %d    |  \n", map[i]->link3->ID);
+           printf ("link3 -> %d    |  \n", map[i]->link3->id);
         } else {
            printf ("link3 -> NULL  |  \n");
         }
