@@ -43,6 +43,7 @@ int main (int argc, char *argv[]){
 
    // join all nodes
    // FORMAT: node, map, link1, link2 ,link3
+   // NON means that the is no link.
    joinNodes (0,  map,  NON, 1,    12);
    joinNodes (1,  map,  NON, 2,     0);
    joinNodes (2,  map,  1,   3,    14);
@@ -133,12 +134,6 @@ void joinNodes (int nodeID, link *map, int nodeLink1, int nodeLink2, int nodeLin
    }
 
 }
-/*
-void joinNodes (link n, link l1, link l2, link l3){
-   n->link1 = l1;
-   n->link2 = l2;
-   n->link3 = l3;
-}*/
 
 void populateMap (link *map){
    int i = 0;
