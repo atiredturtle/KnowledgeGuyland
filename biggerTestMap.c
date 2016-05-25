@@ -171,3 +171,31 @@ void printMap (link map[NUM_NODES]){
         i++;
     }
 }
+
+//Insert ownerID into node struct
+
+//Functions to initialise Owner ID to 0;
+   //Similar to assign ID. Just a while loop to go through the array of nodes and
+   //node->ownerID = 0;
+
+//Starts map in starting state
+   //You know where everyone starts
+   //Player 1 - Starts on node 5(link 3) and 53(link 2)
+   //Player 2 - Starts on node 0(link 3) and 42(link 1)
+   //Player 3 - Starts on node 10(link 1) and 44(link 2)
+
+
+//Functions to obtain Ownership of campus (Do we check for correct resource?)
+   //Given buyer, node to buy,
+   //Assert that the owner is not 4. (It can never change from 4)
+   //node->ownerID = playerID
+   //Changes the nodes its directly linked too as owner 4()
+   //Figure out how to change ownerID of connected Campuses
+
+//Function to obtain ownership of arcs
+  //Given buyer, Node number and link direction
+  //NodeNumber-> owner link direction = Buyer ID
+  //Somehow change the reverse direction
+
+
+  //
